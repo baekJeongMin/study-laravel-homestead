@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::namespace('LaravelRequest')->group(function(){
+    Route::get('request/test', 'RequestController@get');
+});
