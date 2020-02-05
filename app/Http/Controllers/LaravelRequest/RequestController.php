@@ -4,6 +4,7 @@ namespace App\Http\Controllers\LaravelRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Psr\Http\Message\ServerRequestInterface;
 
 class RequestController extends Controller
 {
@@ -35,5 +36,32 @@ class RequestController extends Controller
 
         $method = $request->method();
         var_dump($method);
+
+        return response()->json();
+    }
+
+    public function psrTest(ServerRequestInterface $request)
+    {
+//        var_dump($request);
+        return response()->json([]);
+    }
+
+    public function session(Request $request)
+    {
+        $id = $request->old('id');
+        var_dump($id);
+        $request->flash();
+//        $request->flashOnly(['id']);
+//        $request->flashExcept('name');
+
+        return response()->json([]);
+    }
+
+    public function cookie(Request $request)
+    {
+        $cookies = $request->cookies;
+        var_dump($cookies);
+
+        return response()->json([]);
     }
 }
